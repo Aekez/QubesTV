@@ -6,18 +6,27 @@
 # !>>> Disclaimer <<<!
 # !!Warning!! - Work in progress, not finished.
 
-# !>>> Install instructions <<<!
+# !>>> Install introduction & overview <<<!
 # In order to safely install QubesTV, which in its current version must be installed in dom0,
 # you will need to manually transfer the scripts to dom0, specifically at /home/user/QubesTV.
 # In order to install QubesTV, you will need to execute this script, at above location, while
 # keeping the integrity of the QubesTV folders content together. This script must be run from
-# the /home/user/QubesTV/QubesTV-install-script.sh install path. If you need to find the online
+# the /home/user/QubesTV/qubestv-install-script.sh install path. If you need to find the online
 # QubesTV repository, it can be found here on GitHub: https://github.com/Qubes-Community/QubesTV
 # In order to protect dom0, no repositories will be added in dom0. Hopefully it will be possible
 # to make QubesTV work outside dom0 in the future, but for now this is a needed step.
 # Only one safe dom0 dependency package will be installed in dom0, the remaining installs will be
 # done inside templates and AppVMs.
 
+# !>>> Specific install instructions <<<!
+#1) Open AppVM terminal to download from, use dnf or apt-get install git if it is missing.
+#2) When git is available, then write: git clone https://github.com/Qubes-Community/QubesTV.git
+#3) This will put QubesTV at this location, /home/user/QubesTV in your AppVM.
+#4) Use dnf or apt-get install if zip is missing, this can be done in the AppVm for temporary use.
+#5) Now run in AppVM: zip -r QubesTV.zip QubesTV
+#6) Now run in dom0: qvm-run --pass-io <src-vm> 'cat /home/user/QubesTV.zip' > $HOME/QubesTV.zip
+#7) Now run in dom0: unzip QubesTV.zip
+#8) Now run in dom0: bash /QubesTV/qubestv-install-script.sh and follow the install instructions.
 
 
 
