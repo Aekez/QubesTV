@@ -10,12 +10,13 @@
 # In order to safely install QubesTV, which in its current version must be installed in dom0,
 # you will need to manually transfer the scripts to dom0, specially at /home/user/QubesTV.
 # In order to install QubesTV, you will need to execute this script, at above location, while
-# keeping the integrity of the QubesTV folders content together. If you need to find the QubesTV
-# repository, it can be found here on GitHub: https://github.com/Qubes-Community/QubesTV
+# keeping the integrity of the QubesTV folders content together. This script must be run from
+# the /home/user/QubesTV/QubesTV-install-script.sh install path. If you need to find the online
+# QubesTV repository, it can be found here on GitHub: https://github.com/Qubes-Community/QubesTV
 # In order to protect dom0, no repositories will be added in dom0. Hopefully it will be possible
 # to make QubesTV work outside dom0 in the future, but for now this is a needed step.
-# Only one safe dom0 depency package will be installed in dom0, the remaining installs will be done
-# inside templates and AppVMs.
+# Only one safe dom0 dependency package will be installed in dom0, the remaining installs will be
+# done inside templates and AppVMs.
 
 
 
