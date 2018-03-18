@@ -3,8 +3,8 @@
 # Author:
 # Aekez @ github
 
-# Disclaimer:
-# !!!Warning!!! - Work in progress, not finished.
+# !>>> Disclaimer <<<!
+# !!Warning!! - Work in progress, not finished.
 
 # !>>> Install instructions <<<!
 # In order to safely install QubesTV, which in its current version must be installed in dom0,
