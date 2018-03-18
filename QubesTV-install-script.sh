@@ -8,7 +8,7 @@
 
 # !>>> Install instructions <<<!
 # In order to safely install QubesTV, which in its current version must be installed in dom0,
-# you will need to manually transfer the scripts to dom0, specially at /home/user/QubesTV.
+# you will need to manually transfer the scripts to dom0, specifically at /home/user/QubesTV.
 # In order to install QubesTV, you will need to execute this script, at above location, while
 # keeping the integrity of the QubesTV folders content together. This script must be run from
 # the /home/user/QubesTV/QubesTV-install-script.sh install path. If you need to find the online
