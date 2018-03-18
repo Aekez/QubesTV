@@ -6,6 +6,20 @@
 # Disclaimer:
 # !!!Warning!!! - Work in progress, not finished.
 
+# !>>> Install instructions <<<!
+# In order to safely install QubesTV, which in its current version must be installed in dom0,
+# you will need to manually transfer the scripts to dom0, specially at /home/user/QubesTV.
+# In order to install QubesTV, you will need to execute this script, at above location, while
+# keeping the integrity of the QubesTV folders content together. If you need to find the QubesTV
+# repository, it can be found here on GitHub: https://github.com/Qubes-Community/QubesTV
+# In order to protect dom0, no repositories will be added in dom0. Hopefully it will be possible
+# to make QubesTV work outside dom0 in the future, but for now this is a needed step.
+# Only one safe dom0 depency package will be installed in dom0, the remaining installs will be done
+# inside templates and AppVMs.
+
+
+
+
 # Yes, I undetstand - introduction message.
 zenity --width="420" --height="200" --title="Welcome to the QubesTV installer" --info --text='\nQubesTV is an unofficial project, and is not associated with The Qubes OS Project or Invisible Things Lab.\n\nWhile the author here seeks to provide best possible quality, it is important to remind you to use with QubesTV-alpha with caution. The author takes no responsibility for any outcome from using QubesTV.\n\nQubesTV is currently in alpha-state and is therefore still under heavy development change and restructuring.\n' --ok-label="Yes, I understand."
 
@@ -33,17 +47,6 @@ fi
 wait
 
 
-# Adding QubesTV repository & downloading the scripts.
-ans=$(zenity --width="420" --height="200" --title="Adding QubesTV repository & downloading the scripts." --question --text='\nPressing yes will add the repository required to install/update QubesTV and download QubesTV, nothing will be installed until next step.\n\n- QubesTV will be using the official Qubes OS approach to secure dom0/TemplateVM package install/updates.\n\n- In the future we will be looking into the possibility of moving QubesTV installer process away from dom0.\n\n- QubesTV may periodiocally be updated, keep the repository enabled if you want to receive updates. You may disable it at this /path.\n' --ok-label="Yes, prepare to install QubesTV" --cancel-label="No, stop installing QubesTV" 2> /dev/null
-if [ $? = 0 ] ; then
-command=$(xterm -e '')
-else
-command=$(sudo pkill -F '$HOME/QubesTV-install-script.pid')
-fi
-)
-wait
-
-
 # Cloning TemplateVM & creating QubesTV AppVM.
 ans=$(zenity --width="420" --height="200" --title="Cloning TemplateVM & creating QubesTV AppVM" --question --text='\nThis step will clone and create the TemplateVM where codecs will be installed, and create the AppVM, QubesTV, where your browser modifications will be configured.\n\nRemember cloning a template will consume several GB drive space, and will take a while to complete, depending on how fast your system is.\n\nPlease modify the script if you dont have fedora-26 installed, however please use a fedora template to fully install QubesTV.\n' --ok-label="Yes, please setup QubesTV VMs" --cancel-label="No, I will do this manually" 2> /dev/null
 if [ $? = 0 ] ; then
@@ -57,7 +60,7 @@ wait
 
 
 
-# Adding RPMFusion repositories and codecs.
+# Adding TemplateVM RPMFusion repositories and codecs.
 ans=$(zenity --width="420" --height="200" --title="Installing template codecs dependencies" --question --text='\nThis step will install the codec dependcies required for Firefox.\n\nNote that both Google-Chrome & Chromium have their codecs build-in directly, while Firefox get its codecs externally from upstream repositories.\n\nAdding RPMFusion repositories is required and will be added in the TemplateVM in order to install the required codecs.' --ok-label="Yes, install codecs" --cancel-label="No, I will do this manually" 2> /dev/null
 if [ $? = 0 ] ; then
 command=$(xterm -e '')
@@ -68,7 +71,7 @@ fi
 wait
 
 
-# Installing binary Google-Chrome for backup redundancy.
+# Installing TemplateVM Google-Chrome for backup redundancy.
 ans=$(zenity --width="420" --height="200" --title="Installing template dependencies" --question --text='\nUsing free and open-source software is encouraged, sometimes closed-binary code works better due to market lock-in.\n\nWhile Firefox can play most things, Google-Chrome is one such example where some protected-content sometimes may be eaiser played.\n\nQubesTV considers Google-Chrome as a backup solution, but uses Firefox as primary browser to stream content.\n\nClicking yes will add the official Google-Repository in the TemplateVM.' --ok-label="Yes, install Google-Chrome" --cancel-label="No, I will do this manually" 2> /dev/null
 if [ $? = 0 ] ; then
 command=$(xterm -e '')
